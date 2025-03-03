@@ -1,0 +1,20 @@
+<div>
+  <app-home></app-home>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="card">
+        <form  class="box" (ngSubmit)="login()" #loginForm="ngForm">
+          <h2>Login</h2>
+          <p class="danger">{{message}}</p>
+          <input type="text" name="username" id="username" placeholder="Username"  [(ngModel)]="user.username" #username="ngModel" required>
+          <span class="danger" *ngIf="username.touched && username.errors?.required">Please enter your username</span>
+          <input type="password" name="password" id="password" placeholder="Password" [(ngModel)]="user.password" #password="ngModel" required>
+          <span class="danger" *ngIf="password.touched && password.errors?.required">Please enter your password</span>
+          <input type="submit"  value="Login" [disabled]="!loginForm.valid">
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

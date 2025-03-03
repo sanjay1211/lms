@@ -1,0 +1,104 @@
+<div id="layoutAuthentication">
+  <div id="layoutAuthentication_content">
+    <main>
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-7">
+            <div class="card shadow-lg border-0 rounded-lg mt-5">
+              <div class="card-header">
+                <h3 class="text-center font-weight-light my-4">My Profile</h3>
+              </div>
+              <div class="card-body">
+                <form (ngSubmit)="update()" #updateForm="ngForm">
+                  <div class="row mb-3">
+                    <div class="col-md-6">
+                      <div class="form-floating mb-3 mb-md-0">
+                        Employee Id
+                        <input class="form-control" id="empid" required placeholder="Full Name" name="empId" type="number" readonly="readonly" [(ngModel)]="user.userId" />
+                        
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-floating">
+                       User Name
+                        <input class="form-control" id="username" required name="username" type="text" placeholder="username" readonly="readonly"  [(ngModel)]="user.username" />
+                        
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row mb-3">
+                    <div class="col-md-6">
+                      <div class="form-floating mb-3 mb-md-0">
+                        Full Name
+                        <input class="form-control" id="empname" name="empName" required placeholder="Full Name" type="text"  [(ngModel)]="user.empName" />
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-floating">
+                        Mobile Num
+                        <input class="form-control" id="inputmob" required name="empMob" type="text" placeholder="mobnum"  [(ngModel)]="user.empMob" />
+
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-floating mb-3">
+                    Employee Mail
+                    <input class="form-control" id="empmail" type="email" name="empMail" required placeholder="Email"  [(ngModel)]="user.empMail" />
+                   
+                  </div>
+                  <div class="row mb-3">
+                    <div class="col-md-6">
+                      <div class="form-floating mb-3 mb-md-0">
+                        DOB
+                        <input class="form-control" id="empdob" required name="empDob" type="date"  [(ngModel)]="user.empDob" />
+                       
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-floating mb-3 mb-md-0">
+                        DOJ
+                        <input class="form-control" id="empdoj" type="date" required="required" name="empDoj" readonly  [(ngModel)]="user.empDoj" />
+                        
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row mb-3">
+                    <div class="col-md-6">
+                      <div class="form-floating mb-3 mb-md-0"  *ngIf="user.gender === 'M'">
+                        <input type="radio" name="gender" value="M" [(ngModel)]="user.gender" checked="checked">Male
+                        <br> 
+                        <input type="radio" name="gender" value="F" [(ngModel)]="user.gender">Female
+                      </div>
+                      <div class="form-floating mb-3 mb-md-0" *ngIf="user.gender === 'F'" >
+                        <input type="radio" name="gender" value="M" [(ngModel)]="user.gender">Male
+                        <br> 
+                        <input type="radio" name="gender" value="F"[(ngModel)]="user.gender"
+                          checked="checked">Female
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-floating mb-3 mb-md-0" *ngIf="user.role.roleId === 1">
+                        <input type="radio" name="roleName" checked="checked" >Admin
+                      </div>
+                      <div class="form-floating mb-3 mb-md-0" *ngIf="user.role.roleId === 2">
+                        <input type="radio" name="roleName"  checked="checked">Manager
+                      </div>
+                        <div class="form-floating mb-3 mb-md-0" *ngIf="user.role.roleId === 3">
+                        <input type="radio" name="roleName"   checked="checked">Employee
+                      </div>
+                    </div>
+                  </div>
+                  <div class="mt-4 mb-0">
+                    <div class="d-grid">
+                      <input type="submit" value="Update Profile" [disabled]="!updateForm.valid">
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>

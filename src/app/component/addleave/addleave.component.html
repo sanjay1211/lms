@@ -1,0 +1,41 @@
+<div id="layoutAuthentication">
+  <div id="layoutAuthentication_content">
+    <main>
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-5">
+            <div class="card shadow-lg border-0 rounded-lg mt-5">
+              <div class="card-header">
+                <h3 class="text-center font-weight-light my-4">Add Leave</h3>
+              </div>
+              <div class="card-body">
+                <p class="danger" style="text-align: center;" >{{message}}</p>
+                <form (ngSubmit)="saveLeave()" #leaveForm="ngForm" >
+                  <div class="form-floating mb-3">
+                    Leave Name
+                    <input class="form-control" id="leavename" name="lvmName" type="text" [(ngModel)]="leaveMaster.lvmName" #lvmName="ngModel" required/> 
+                    <span class="danger" *ngIf="lvmName.touched && lvmName.errors?.required">Leave Name is required</span>
+                  </div>
+                  <div class="form-floating mb-3">
+                   Leave Abbrivation
+                    <input class="form-control" id="leaveabbr" name="lvmAbbr" type="text"   [(ngModel)]="leaveMaster.lvmAbbr" #lvmAbbr="ngModel" required/> 
+                    <span class="danger" *ngIf="lvmAbbr.touched && lvmAbbr.errors?.required">Leave Abbr is required</span>
+                  </div>
+                  <div class="form-floating mb-3">
+                    Maximum Balance
+                    <input class="form-control" id="maxVal" name="maxBalance" type="number" [(ngModel)]="leaveMaster.maxBalance" #maxBalance="ngModel" min="1" max="20"  required/> 
+                    <span class="danger" *ngIf="maxBalance.touched && maxBalance.errors?.required">Maximum Balance is required</span>
+                    <span class="danger" *ngIf="maxBalance.touched && maxBalance.errors?.min">Balance should be greater than 1</span>
+                    <span class="danger" *ngIf="maxBalance.touched && maxBalance.errors?.max">Balance should be less than 20</span>
+                  </div>
+                  <div class="card-footer text-center py-3">
+                    <input type="submit" class="btn btn-primary" [disabled]="!leaveForm.valid" value="Add">
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>

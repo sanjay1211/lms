@@ -1,0 +1,49 @@
+<div>
+  <app-home></app-home>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="card">
+        <form class="box" (ngSubmit)="register()" #regForm="ngForm">
+          <p style="color: whitesmoke;">{{message}}</p>
+          <h4>Employee Register</h4>
+          <input type="text" name="empName" id="empName" placeholder="FullName" [(ngModel)]="user.empName" #empName="ngModel" required >
+          <span class="danger" *ngIf="(empName.touched || regForm.submitted) && empName.errors?.required">Name is required</span>
+          <input type="text" name="empMob" id="empMob" placeholder="MobileNumber" [(ngModel)]="user.empMob" #empMob="ngModel" required >
+          <span class="danger" *ngIf="(empMob.touched || regForm.submitted) && empMob.errors?.required">Mobile Number is required</span>
+          <input type="email" name="empMail" id="empMail" placeholder="Email" [(ngModel)]="user.empMail" #empMail="ngModel" required email>
+          <span class="danger" *ngIf="(empMail.touched || regForm.submitted) && empMail.errors?.required">Email is required</span>
+          <span class="danger" *ngIf="(empMail.touched || regForm.submitted) && empMail.errors?.email">Enter a valid email address</span>
+          <input type="text" name="username" id="username" placeholder="Username" [(ngModel)]="user.username" #username="ngModel" required >
+          <span class="danger" *ngIf="(username.touched || regForm.submitted) && username.errors?.required">Username is required</span>
+          <input type="password" name="password" id="password" placeholder="Password" [(ngModel)]="user.password" #password="ngModel" required>
+          <span class="danger" *ngIf="(password.touched || regForm.submitted) && password.errors?.required">Please enter password</span>
+          <div>
+          <span style="color: whitesmoke;">Gender &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: &nbsp;</span>
+          <label style="color: whitesmoke;">
+          <input type="radio" name="gender" id="m" value="M" [(ngModel)]="user.gender" #gender="ngModel" required >Male
+          </label>
+          &nbsp;
+          <label style="color: whitesmoke;">
+          <input type="radio" name="gender" id="fm" [(ngModel)]="user.gender" value="F" #gender="ngModel" required >Female
+          </label>
+          <br>
+          <span class="danger" *ngIf="(gender.touched || regForm.submitted) && gender.errors?.required">Please select your gender <br></span>
+          <label style="color: whitesmoke;" for="empDob">Date of birth&nbsp;&nbsp;&nbsp; : 
+          <input type="date" name="empDob" id="empDob" [(ngModel)]="user.empDob" #empDob="ngModel" required >
+          </label>
+          <br>
+          <span class="danger" *ngIf="(empDob.touched || regForm.submitted) && empDob.errors?.required">Please enter your DOB <br></span>
+          <label style="color: whitesmoke;" for="empDoj">Date of joining :
+          <input type="date" name="empDoj" [(ngModel)]="user.empDoj" id="empDoj" #empDoj="ngModel" required>
+          </label>
+          <br>
+          <span class="danger" *ngIf="(empDoj.touched || regForm.submitted) && empDoj.errors?.required">Please enter your DOJ </span>
+          </div>
+          <input type="submit" value="Register" [disabled]="!regForm.valid">
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

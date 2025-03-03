@@ -1,0 +1,7 @@
+a:hover {
+    text-decoration-line: underline;
+    text-decoration-color:orangered;
+    background-color: rgb(93, 93, 235);
+    border-radius: 20px;
+   padding: 5%;
+  }

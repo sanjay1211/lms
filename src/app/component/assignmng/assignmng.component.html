@@ -1,0 +1,32 @@
+<br><br><br><br><br><br>
+<div>
+  <div class="row justify-content-center align-items-center">
+    <h1 style="text-align: center;">Assign Manager</h1>
+  </div>
+  <br>
+  <div class="row justify-content-center align-items-center h-100">
+    <div class="col col-sm-6 col-md-6 col-lg-4 col-xl-3" style="background-color:whitesmoke;">
+      <div class="form-group">
+        <p style="color:black; text-align: center;">{{message}}</p>
+        <form (ngSubmit)="assignMng()" #mngForm="ngForm">
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Employee</mat-label>
+            <mat-select required id="emp" name="empName" [(ngModel)]="emp.empName" >
+              <ng-container *ngFor="let usr of users;">
+                <mat-option *ngIf="usr.role.roleId==2 || usr.role.roleId==3" [value]="usr.empName">{{usr.empName}}</mat-option>
+              </ng-container>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Manager</mat-label>
+            <mat-select  id="mng" name="userId" [(ngModel)]="mng.userId" required>
+              <ng-container *ngFor="let user of users;">
+                <mat-option *ngIf="user.role.roleId == 2" [value]="user.userId">{{user.empName}}</mat-option>
+              </ng-container>
+            </mat-select>
+          </mat-form-field>
+          <br> <input style="background-color: lime;" type="submit" value="Assign" [disabled]="!mngForm.valid">
+        </form>
+      </div>
+    </div>
+  </div>

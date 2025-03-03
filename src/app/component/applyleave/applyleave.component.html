@@ -1,0 +1,53 @@
+<br><br><br>
+<div id="layoutAuthentication">
+  <div id="layoutAuthentication_content">
+    <main>
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-7">
+            <div class="card shadow-lg border-0 rounded-lg mt-5">
+              <div class="card-header">
+                <h3 class="text-center font-weight-light my-4">Apply Leave</h3>
+              </div>
+              <p style="color: black; text-align: center;">{{message}}</p>
+              <div class="card-body">
+                <form (ngSubmit)="applyLeave()" #lveForm="ngForm">
+                  <div class="row mb-3">
+                    <div class="col-md-6">
+                      <div class="form-floating mb-3 mb-md-0">
+                        From Date
+                        <input class="form-control" id="frmdate" required="required" name="fromDate" type="date" [(ngModel)]="leave.fromDate" /> 
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-floating">
+                        To Date
+                        <input class="form-control" id="todate" required="required" name="toDate" type="date" placeholder="to date" [(ngModel)]="leave.toDate"/>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-floating mb-3">
+                    Reason
+                    <input class="form-control" id="reason" type="text" name="reason" required="required"  placeholder="reason" [(ngModel)]="leave.reason" /> 
+                  </div>
+                    <mat-form-field appearance="outline" class="full-width">
+                      <mat-label>Leave Type</mat-label>
+                      <mat-select  id="lvmtype" name="lvmName" [(ngModel)]="lvm.lvmName" required>
+                        <ng-container *ngFor="let lvb of leaveBalances;">
+                          <mat-option *ngIf="lvb.user.userId==emp.userId" [value]="lvb.leaveMaster.lvmName" >{{lvb.leaveMaster?.lvmName}}</mat-option>
+                        </ng-container>
+                      </mat-select>
+                    </mat-form-field>
+                  <div class="mt-4 mb-0">
+                    <div class="d-grid" >
+                      <input type="submit" value="Apply" [disabled]="!lveForm.valid" >
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
